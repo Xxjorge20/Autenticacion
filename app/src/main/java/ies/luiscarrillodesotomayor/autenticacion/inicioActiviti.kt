@@ -1,8 +1,11 @@
 package ies.luiscarrillodesotomayor.autenticacion
 
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
 import ies.luiscarrillodesotomayor.autenticacion.databinding.InicioactivityBinding
 
 class inicioActiviti : AppCompatActivity() {
@@ -20,5 +23,15 @@ class inicioActiviti : AppCompatActivity() {
 
         // cambio el label con el nombre del usuario
         binding.textView2.text = "Bienvenido $nombre"
+
+        binding.BCerrarSesion.setOnClickListener {
+            FirebaseAuth.getInstance().signOut()
+
+            // Volver a la ventana de inicio
+            startActivity(Intent(this, MainActivity::class.java))
+            Toast.makeText(this, "Sesion cerrada", Toast.LENGTH_LONG).show()
+        }
+
+
     }
 }
