@@ -15,9 +15,15 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // boton de LOGIN
+        // boton de login para los usuarios registrados
         binding.BEntrar.setOnClickListener {
             login()
+        }
+
+        // Evento para registrarse usuarios
+        binding.BRegistrar.setOnClickListener {
+            val intent = Intent(this, registroActivity::class.java)
+            startActivity(intent)
         }
 
     }
